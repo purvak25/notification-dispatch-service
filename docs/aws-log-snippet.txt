@@ -1,0 +1,56 @@
+================================================================================
+AWS CloudWatch Logs - /aws/lambda/notification-dispatch-prod
+================================================================================
+
+2024-06-07T09:08:11.214Z [NOTIFY] Notification event received
+2024-06-07T09:08:11.215Z [NOTIFY] Processing notification_id=notif_78291
+2024-06-07T09:08:11.487Z [EMAIL] Email successfully sent to user: alex.morgan@company.com
+2024-06-07T09:08:11.488Z [ERROR] Temporary processing failure occurred
+
+Error: temporary failure
+    at process_notification (/var/task/src/notification_handler.py:18:11)
+
+2024-06-07T09:08:11.489Z [RETRY] Scheduling retry attempt 1 for notification_id=notif_78291
+
+---
+
+2024-06-07T09:08:17.901Z [NOTIFY] Retrying notification_id=notif_78291 retry=1
+2024-06-07T09:08:17.902Z [EMAIL] Email successfully sent to user: alex.morgan@company.com
+2024-06-07T09:08:17.903Z [ERROR] Temporary processing failure occurred
+
+Error: temporary failure
+    at process_notification (/var/task/src/notification_handler.py:18:11)
+
+2024-06-07T09:08:17.904Z [RETRY] Scheduling retry attempt 2 for notification_id=notif_78291
+
+---
+
+2024-06-07T09:08:25.118Z [NOTIFY] Retrying notification_id=notif_78291 retry=2
+2024-06-07T09:08:25.119Z [EMAIL] Email successfully sent to user: alex.morgan@company.com
+2024-06-07T09:08:25.120Z [ERROR] Temporary processing failure occurred
+
+Error: temporary failure
+    at process_notification (/var/task/src/notification_handler.py:18:11)
+
+2024-06-07T09:08:25.121Z [WARNING] Duplicate notification detected for notification_id=notif_78291
+
+---
+
+2024-06-07T09:12:42.204Z [METRICS] SES send volume exceeded expected baseline
+2024-06-07T09:12:42.205Z [METRICS] Retry queue depth increased above threshold
+2024-06-07T09:12:42.206Z [WARNING] Same notification ID processed multiple times
+
+---
+
+2024-06-07T09:31:11.982Z [INVESTIGATION] Root cause identified in retry workflow
+2024-06-07T09:31:11.983Z [INVESTIGATION] Notification dispatch operation is not idempotent
+
+---
+
+2024-06-07T09:52:18.334Z [DEPLOYMENT] Hotfix deployed successfully
+2024-06-07T09:52:18.335Z [DEPLOYMENT] Idempotency validation enabled
+2024-06-07T09:52:18.336Z [DEPLOYMENT] Duplicate notification protection active
+
+================================================================================
+END LOG SNIPPET
+================================================================================
